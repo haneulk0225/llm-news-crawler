@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+requests
+feedparser
+trafilatura
+google-genai
+sqlalchemy
+python-dotenv
