@@ -1,10 +1,8 @@
 from fastapi import APIRouter
+from app.services.news_service import search_news
 
 router = APIRouter()
 
 @router.get("/news")
 def news(keyword: str):
-    return {
-        "keyword": keyword,
-        "message": f"'{keyword}' 뉴스를 검색합니다."
-    }
+    return search_news(keyword)
