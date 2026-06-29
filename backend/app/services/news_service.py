@@ -1,3 +1,4 @@
+import trafilatura
 import feedparser
 
 def search_news(keyword: str):
@@ -6,14 +7,21 @@ def search_news(keyword: str):
 
     feed = feedparser.parse(url)
 
+
     articles = []
 
     for item in feed.entries[:10]:
 
+        downloaded = trafilatura.fetch_url(item.link)
+
+        content = trafilatura.extract(downloaded)
+        
         articles.append( {
             "title": item.title,
-            "link": item.link
+            "link": item.link,
+            "content": content
         })
+
 
     return {
         "keyword": keyword,
